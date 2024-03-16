@@ -28,7 +28,7 @@ The following technologies and libraries are used in this project:
 
 To set up the project locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/olivemonk/threejs-ai-tshirt-app.git`
+1. Clone the repository: `git clone https://github.com/kapilsoni129/Bit2Byte`
 2. Navigate to the project directory: `cd client`
 3. Install the dependencies: `npm install`
 4. Configure the required API keys and environment variables. Refer to the documentation for specific details on API integration and environment setup.
@@ -38,4 +38,3 @@ To set up the project locally, follow these steps:
 ## Acknowledgments
 
 I would like to express my gratitude to the JavaScript Mastery for this project tutorial and React, Three.js, and OpenAI for their amazing tools and libraries, which have made this project possible.
-
