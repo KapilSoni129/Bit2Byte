@@ -7,7 +7,7 @@ function Login() {
 
   const handleNavigation = (e) => {
     e.preventDefault();
-    navigate("/");
+    navigate("/home");
   };
 
   return (

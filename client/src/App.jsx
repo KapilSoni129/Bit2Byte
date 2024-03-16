@@ -9,7 +9,7 @@ function App() {
     
     <main className="app transition-all ease-in">
       <Routes>
-        <Route path="/page" element={<Bruh />} />
+        <Route path="/home" element={<Bruh />} />
         <Route path="/login" element={<Login/>} />
         <Route path="/*" element={<Navigate to="/login" />} />
         {/* Add other routes here */}
