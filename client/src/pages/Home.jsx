@@ -1,5 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSnapshot } from 'valtio';
+import { useNavigate } from 'react-router-dom';
+
 
 import state from '../store';
 import { CustomButton } from '../components';
@@ -7,13 +9,22 @@ import {
   headContainerAnimation,
   headContentAnimation,
   headTextAnimation,
-  slideAnimation
+  slideAnimation,
+  fadeAnimation
 } from '../config/motion';
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleNavigation = (e) => {
+    e.preventDefault();
+    navigate("/login");
+  };
+
   const snap = useSnapshot(state);
 
   return (
+    <motion.section>
     <AnimatePresence>
       {snap.intro && (
         <motion.section className="home" {...slideAnimation('left')}>
@@ -46,10 +57,26 @@ const Home = () => {
                 customStyles="w-fit px-4 py-2.5 font-bold text-sm"
               />
             </motion.div>
+
+            
           </motion.div>
+          
         </motion.section>
+        
       )}
     </AnimatePresence>
+    <motion.div
+      className="absolute z-10 top-5 right-5"
+      {...fadeAnimation}
+    >
+      <CustomButton 
+        type="filled"
+        title="Log out"
+        handleClick={handleNavigation}
+        customStyles="w-fit px-4 py-2.5 font-bold text-sm"
+      />
+    </motion.div>
+    </motion.section> 
   )
 }
 

@@ -20,7 +20,7 @@ function Login() {
             <span className="card-side"></span>
             <div className="flip-card__inner">
               <div className="flip-card__front">
-                <div className="title">Log in</div>
+                <div className="title">Fashion helper</div>
                 <form action="" className="flip-card__form">
                   <input
                     type="email"
@@ -43,7 +43,7 @@ function Login() {
                 </form>
               </div>
               <div className="flip-card__back">
-                <div className="title">Sign up</div>
+                <div className="title">Fashion helper</div>
                 <form action="" className="flip-card__form">
                   <input
                     type="name"
