@@ -1,15 +1,50 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
-
+import { useState } from "react";
+import {createUserWithEmailAndPassword ,signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../Firebase";
 function Login() {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleNavigation = (e) => {
     e.preventDefault();
     navigate("/home");
   };
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    console.log(email);
+    console.log(password);
+    signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+        const user = userCredential.user;
+        navigate("/home");
+        }
+    ).catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage);
+    }
+    );
+  }
+  
+  const signup = async (e) => {
+    e.preventDefault();
+    console.log(email);
+    console.log(password);
 
+    createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+      const user = userCredential.user;
+      navigate("/home");
+    }
+    ).catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorMessage);
+    });
+}
+  
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="wrapper">
@@ -27,16 +62,18 @@ function Login() {
                     placeholder="Email"
                     name="email"
                     className="flip-card__input"
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                   <input
                     type="password"
                     placeholder="Password"
                     name="password"
                     className="flip-card__input"
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                   <button
                     className="flip-card__btn"
-                    onClick={handleNavigation}
+                    onClick={handleLogin}
                   >
                     Let's go!
                   </button>
@@ -55,16 +92,18 @@ function Login() {
                     placeholder="Email"
                     name="email"
                     className="flip-card__input"
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                   <input
                     type="password"
                     placeholder="Password"
                     name="password"
                     className="flip-card__input"
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                   <button
                     className="flip-card__btn"
-                    onClick={handleNavigation}
+                    onClick={signup}
                   >
                     Confirm!
                   </button>
